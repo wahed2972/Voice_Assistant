@@ -18,14 +18,18 @@ def wishMe():
     hour = int(datetime.datetime.now().hour)
     if hour>0 and hour<12:
         speak("Good Morning!")
+        print("Good Morning!")
         
     elif hour>=12 and hour<18:
         speak("Good Afternoon!")
+        print("Good Afternoon!")
     
     else:
         speak("Good Evening!")
+        print("Good Evening!")
         
     speak("I am your Assistant Sir.Please tell me how may I help you")
+    print("I am your Assistant Sir.Please tell me how may I help you")
     
 def takeCommand():
     r = sr.Recognizer()
@@ -46,7 +50,7 @@ def takeCommand():
     return query
 
 def sendEmail(to,content):
-    with open("password.txt",'r') as file:
+    with open("D:\Internship\Python- Codeclause\Voice Assistant\password.txt",'r') as file:
         pword = file.read()
 
     server = smtplib.SMTP('smtp.gmail.com',587)
@@ -86,6 +90,12 @@ if __name__ == "__main__":
             strTime = datetime.datetime.now().strftime("%H:%M:%S")
             speak(f"Sir, the time is {strTime} ")
             print(f"Sir, the time is {strTime} ")
+            
+        elif 'the date' in query:
+            dateT = datetime.date.today().strftime("%D-%M-%Y")
+            speak(f"Sir, todays date is {dateT}")
+            print(f"Sir, todays date is {dateT}")
+            
             
         elif 'open code' in query:
             codePath = "C:\\Users\\0727tx\\Documents\\Microsoft VS Code\\Code.exe"
